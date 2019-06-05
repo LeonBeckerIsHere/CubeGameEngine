@@ -1,7 +1,7 @@
 #include "Window.h"
 
-Window::Window(GLuint width, GLuint height, const char* title) {
-	if (!glfwInit()) {
+Window::Window(GLuint width = 800, GLuint height = 600, const char* title = "default") : width(width), height(height), title(title), window(NULL) {
+	if (glfwInit()) {
 		Window::setWindowHints();
 
 		window = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -12,7 +12,7 @@ Window::Window(GLuint width, GLuint height, const char* title) {
 			exit(-1);
 		}
 
-		glfwSetKeyCallback(window, InputManager::getInstance().key_callback);
+		Window::setKeyCallback();
 		Window::loadGLAD();
 		Window::defineViewport(0, 0, width, height);
 	}
@@ -66,5 +66,9 @@ void Window::setWindowHints() {
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 	}
+}
+
+void Window::setKeyCallback() {
+	glfwSetKeyCallback(window, InputManager::keyCallback);
 }
 

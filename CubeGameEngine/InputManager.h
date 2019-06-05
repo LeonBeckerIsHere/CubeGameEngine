@@ -11,11 +11,10 @@ public:
 		return instance;
 	}
 
-	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
-		if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-			glfwSetWindowShouldClose(window, GL_TRUE);
+	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) {
+		InputManager::getInstance().keyCallbackImplementation(window, key, scancode, action, mode);
 	}
-	void key_callback_Impl()
+	void keyCallbackImplementation(GLFWwindow* window, int key, int scancode, int action, int mode);
 
 	InputManager(InputManager const&) = delete;
 	InputManager(InputManager&&) = delete;
@@ -23,5 +22,5 @@ public:
 	InputManager& operator=(InputManager&&) = delete;
 private:
 	InputManager() {};
-	~InputManager() {};
+	virtual ~InputManager() {};
 };

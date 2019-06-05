@@ -1,4 +1,3 @@
-#include <Windows.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -9,8 +8,7 @@
 
 int main() {
 	InputManager& inputManager = InputManager::getInstance();
-	Window window(800,600,"Test Window");
-
+	Window window(1280, 720, "Main Screen");
 	while (window.isWindowOpen()) {
 		window.pollWindowEvents();
 
