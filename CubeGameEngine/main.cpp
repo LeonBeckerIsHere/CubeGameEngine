@@ -2,19 +2,13 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "InputManager.h"
-#include "Window.h"
+#include "CoreEngine.h"
 
 
 
 int main() {
 	InputManager& inputManager = InputManager::getInstance();
-	Window window(1280, 720, "Main Screen");
-	while (window.isWindowOpen()) {
-		window.pollWindowEvents();
-
-		window.clearWindow();
-		window.swapBuffers();
-	}
-
+	CoreEngine coreEngine(1280, 720, "Main Screen");
+	coreEngine.MainLoop();
 	return 0;
 }
