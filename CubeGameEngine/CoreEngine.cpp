@@ -1,6 +1,7 @@
 #include "CoreEngine.h"
 
 CoreEngine::CoreEngine(GLuint width, GLuint height, const char* title) : window(width, height, title) {
+
 }
 
 void CoreEngine::MainLoop(){

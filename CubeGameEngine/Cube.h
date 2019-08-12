@@ -55,6 +55,7 @@ private:
 	};
 	std::vector<Texture> textures;
 	glm::vec3 position;
+	glm::vec3 scale;
 	Material material;
 	GLuint VAO, VBO, EBO;
 	void setup();
